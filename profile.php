@@ -18,7 +18,7 @@
                     <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="panel panel-primary text-center no-boder bg-color-green">
                             <div class="panel-body">
-                               <a href="notice.php"><i class="fa fa-bar-chart-o fa-5x"></i></a>
+                               <a href="#"><i class="fa fa-bar-chart-o fa-5x"></i></a>
                                 <h3>8,457</h3>
                             </div>
                             <div class="panel-footer back-footer-green">
@@ -63,10 +63,22 @@
                             </div>
                         </div>
                     </div>
+                      <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-green">
+                            <div class="panel-body">
+                               <a href="notice.php"><i class="fa fa-envelope fa-5x"></i></a>
+                                <h3>8,457</h3>
+                            </div>
+                            <div class="panel-footer back-footer-green">
+                                Noticeboard
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
-                <div class="row">
+              <!--   <div class="row">
 
 
                     <div class="col-md-9 col-sm-12 col-xs-12">
@@ -93,7 +105,7 @@
                 </div>
                 <!-- /. ROW  -->
 
-                <div class="row">
+               <!-- <div class="row">
                     <div class="col-md-4 col-sm-12 col-xs-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -203,6 +215,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div> -->
                 <!-- /. ROW  -->
+            </div>
 	<?php include 'footer.php'; ?>

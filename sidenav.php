@@ -4,13 +4,13 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a>
+                        <a class="active-menu" href="profile.php"><i class="fa fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-home"></i> Home</a>
                     </li>
 					<li>
-                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i> Forums<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> Forums<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Classifieds</a>
@@ -36,7 +36,7 @@
                             </ul>
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Refer & earn<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-qrcode"></i> Refer & earn<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Refer a complex</a>
@@ -44,7 +44,7 @@
                         </ul>
                     </li>
                       <li>
-                        <a href="tab-panel.html"><i class="fa fa-wrench"></i> Helpdesk<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-wrench"></i> Helpdesk<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Complaintbox</a>
@@ -52,7 +52,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="table.html"><i class="fa fa-shopping-cart"></i> Bazaar<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-shopping-cart"></i> Bazaar<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Order a service</a>
@@ -66,7 +66,7 @@
                             </ul>
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-shield"></i> Gatekeeper<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-shield"></i> Gatekeeper<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Maintainence staff</a>
@@ -74,7 +74,7 @@
                         </ul>
                     </li>
                         <li>
-                        <a href="chart.html"><i class="fa fa-list"></i> Directory<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-list"></i> Directory<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Members</a>
@@ -97,7 +97,12 @@
                             </ul>
                     </li>
                     <li>
-                        <a href="form.html"><i class="fa fa-edit"></i> Meetings <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-edit"></i> Meetings <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Action item tracker</a>
+                            </li>
+                        </ul>
                     </li>
 
 
@@ -124,7 +129,7 @@
                             </li>
                                 </ul>
                                  <li>
-                        <a href="table.html"><i class="fa fa-files-o"></i> Report<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-files-o"></i> Report<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Reports list</a>
