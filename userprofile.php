@@ -21,7 +21,7 @@
     	<br>
      <fieldset>
      	<legend>General</legend>
-<button type="button" class="btn btn-primary">edit</button>
+       <a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a>
      </fieldset>
     </div>
     <div id="preferences" class="tab-pane fade">
