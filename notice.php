@@ -16,8 +16,8 @@
                         </tr>
                         <tr>
                           <td><label class="sub">Attachments,if any</label></td>
-                          <td><input type="file" name="file" class="inp"></td>
-                          <td><button type="submit" name="submit" class="btn-primary upload">Uploadfile</button></td>
+                          <td><input type="file" name="file"></td>
+                          <td><button type="submit" name="submit" class="btn btn-primary upload">Uploadfile</button></td>
                         </tr>
                       </tbody>
                     </table>

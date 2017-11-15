@@ -62,8 +62,8 @@
         <h1>Welcome to Imperial studios</h1>
         <h2>We create <span class="rotating">beautiful graphics, functional websites, working mobile apps</span></h2>
         <div class="actions">
-          <a href="#about" class="btn-get-started">Get Strated</a>
-          <a href="#services" class="btn-services">Our Services</a>
+          <a href="login.php" class="btn-get-started">Login</a>
+          <a href="signup.php" class="btn-services">Signup</a>
         </div>
       </div>
     </div>

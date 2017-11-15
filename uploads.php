@@ -10,11 +10,11 @@
 
       $fileExt=explode('.',$fileName);
       $fileActualExt=strtolower(end($fileExt));
-
+// echo "<pre>"; print_r($_FILES); exit;
       $allowed=array('pdf','ppt','word','excel','zip','png','jpg','gif');
       if (in_array($fileActualExt,$allowed)) {
           if ($fileError === 0) {
-             if ($fileSize < 1000000) {
+             if ($fileSize < 20000) {
                 $fileNameNew = rand(100,10000).".".$fileName;
                 $fileDestination = 'uploads/'.$fileNameNew;
                if(move_uploaded_file($fileTmpName,$fileDestination)){
