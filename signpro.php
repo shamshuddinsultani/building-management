@@ -1,4 +1,7 @@
 <?php include 'db.php'; ?>
+<?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
+header('location:index.php');
+} ?>
 <?php
 if(isset($_POST['submit']))
 {

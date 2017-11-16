@@ -1,18 +1,17 @@
+<?php session_start(); ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
         <div id="page-wrapper">
             <div id="page-inner">
-
-
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                    	<div class="container">
+              <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                    	
   <hr>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#profile"><i class="fa fa-user" style="color:green"></i>Profile</a></li>
     <li><a data-toggle="tab" href="#preferences"><i class="fa fa-gear" style="color:orange"></i>Preferences</a></li>
-    <li><a data-toggle="tab" href="#unitdetails"><i class="fa fa-building-o" style="color:orange"></i>Unit Details</a></li>
+    <li><a data-toggle="tab" href="#unitdetails"><i class="fa fa-building-o" style="color:black"></i>Unit Details</a></li>
     <li><a data-toggle="tab" href="#unitmembers"><i class="fa fa-users" style="color:red"></i>Unit Members</a></li>
   </ul>
 
@@ -21,7 +20,14 @@
     	<br>
      <fieldset>
      	<legend>General</legend>
-       <a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a>
+     	<div class="col-sm-4 col-xs-12">
+     		<div id="preview">
+     		<img src="assets/img/blankimage.jpg">
+     	</div>
+     </div>
+     <div class="col-sm-8 col-xs-12">
+     	<p>Email: <?php echo $_SESSION['email']; ?></p>
+     </div>
      </fieldset>
     </div>
     <div id="preferences" class="tab-pane fade">
@@ -44,7 +50,8 @@
     </div>
   </div>
 </div>
+<a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a>
                     	        </div>
-                    	    </div>
-                    	</div>
+                    	 
+                    	
 	<?php include 'footer.php'; ?>

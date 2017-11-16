@@ -1,3 +1,7 @@
+<?php session_start(); ?>
+<?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
+header('location:index.php');
+} ?>
 <?php include 'db.php'; ?>
 <?php
 if(isset($_POST['submit']))
@@ -6,15 +10,19 @@ if(isset($_POST['submit']))
 // echo '</pre>';
 // exit;
 {
-  $username=$_POST['username'];
+  $email=$_POST['email'];
   $password=$_POST['password'];
-
-     $sql="SELECT * FROM admin WHERE username='$username' && password='$password'";
+     $sql="SELECT * FROM admin WHERE email='$email' && password='$password'";
 $result=mysqli_query($conn,$sql);
+$row=mysqli_fetch_assoc($result);
+//echo "<pre>"; print_r($row); exit;
 
 $rowcount=mysqli_num_rows($result);
-// echo "<pre>"; print_r($rowcount); exit;
+
     if($rowcount>0){
+      $_SESSION['email']=$row["email"];
+      $_SESSION['id']=$row["id"];
+      $_SESSION['is_loggedin']=true;
       header('location:profile.php');
     }
     else{

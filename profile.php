@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
@@ -18,7 +19,7 @@
                     <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="panel panel-primary text-center no-boder bg-color-green">
                             <div class="panel-body">
-                               <a href="#"><i class="fa fa-bar-chart-o fa-5x"></i></a>
+                               <a href="#"><i class="fa fa-bar-chart-o fa-5x" style="color: green"></i></a>
                                 <h3>8,457</h3>
                             </div>
                             <div class="panel-footer back-footer-green">
@@ -42,7 +43,7 @@
                     <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="panel panel-primary text-center no-boder bg-color-red">
                             <div class="panel-body">
-                                <a href=""><i class="fa fa fa-comments fa-5x"></i></a>
+                                <a href=""><i class="fa fa fa-comments fa-5x" style="color: brown"></i></a>
                                 <h3>Discussion forum </h3>
                             </div>
                             <div class="panel-footer back-footer-red">
@@ -54,7 +55,7 @@
                     <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="panel panel-primary text-center no-boder bg-color-brown">
                             <div class="panel-body">
-                                <a href="#"><i class="fa fa-users fa-5x"></i></a>
+                                <a href="#"><i class="fa fa-users fa-5x" style="color: orange"></i></a>
                                 <h3>36,752 </h3>
                             </div>
                             <div class="panel-footer back-footer-brown">
@@ -66,7 +67,7 @@
                       <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="panel panel-primary text-center no-boder bg-color-green">
                             <div class="panel-body">
-                               <a href="notice.php"><i class="fa fa-envelope fa-5x"></i></a>
+                               <a href="notice.php"><i class="fa fa-envelope fa-5x" style="color: black"></i></a>
                                 <h3>8,457</h3>
                             </div>
                             <div class="panel-footer back-footer-green">
