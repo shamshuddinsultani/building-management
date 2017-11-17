@@ -26,6 +26,7 @@
      	</div>
      </div>
      <div class="col-sm-8 col-xs-12">
+     	<p>Fullname:</p>
      	<p>Email: <?php echo $_SESSION['email']; ?></p>
      </div>
      </fieldset>
@@ -52,6 +53,7 @@
 </div>
 <a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a>
                     	        </div>
+                    	    </div>
                     	 
                     	
 	<?php include 'footer.php'; ?>
