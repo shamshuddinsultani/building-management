@@ -1,4 +1,7 @@
 <?php session_start(); ?>
+<?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
+header('location:index.php');
+} ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
@@ -19,15 +22,35 @@
     <div id="profile" class="tab-pane fade in active">
     	<br>
      <fieldset>
-     	<legend>General</legend>
+     	<legend>General <span style="float: right;"><a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a></span></legend>
      	<div class="col-sm-4 col-xs-12">
      		<div id="preview">
      		<img src="assets/img/blankimage.jpg">
      	</div>
      </div>
      <div class="col-sm-8 col-xs-12">
-     	<p>Fullname:</p>
-     	<p>Email: <?php echo $_SESSION['email']; ?></p>
+     	<table class="table table-dark">
+ 
+  <tbody>
+    <tr>
+      
+      <td>Fullname:</td>
+      <td></td>
+      
+    </tr>
+    <tr>
+      
+      <td>Email:</td>
+      <td><?php echo $_SESSION['email']; ?> </td>
+  </tr>
+    <tr>
+      
+      <td>Birthday:</td>
+      <td></td>
+      
+    </tr>
+</tbody>
+</table>
      </div>
      </fieldset>
     </div>
@@ -51,7 +74,6 @@
     </div>
   </div>
 </div>
-<a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a>
                     	        </div>
                     	    </div>
                     	 
