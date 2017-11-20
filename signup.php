@@ -53,15 +53,15 @@
 			                    <form role="form" action="signpro.php" method="post" class="login-form">
                               <div class="form-group">
   			                    		<label class="sr-only" for="form-email">Email</label>
-  			                        	<input type="email" name="email" placeholder="Email..." class="form-username form-control" id="form-username">
+  			                        	<input type="email" name="email" placeholder="Email..." class="form-username form-control" id="form-username" required>
   			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+			                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password" required>
 			                        </div>
                               <div class="form-group">
                                 <label class="sr-only" for="form-password">ConPassword</label>
-                                <input type="password" name="conpassword" placeholder="ConPassword..." class="form-password form-control" id="form-password">
+                                <input type="password" name="conpassword" placeholder="ConPassword..." class="form-password form-control" id="form-password" required>
                               </div>
 			                        <button type="submit" name="submit" class="btn">Signup</button><br><br>
                               <a href="index.php"><button type="button" class="btn">Home</button></a>

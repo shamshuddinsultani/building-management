@@ -10,13 +10,13 @@ if(isset($_POST['submit'])){
   $newpass=$_POST['newpass'];
   $conpass=$_POST['conpass'];
 
-  $sql="SELECT * FROM admin WHERE password='$oldpass' and id='".$_SESSION["id"]."'";
+  $sql="SELECT * FROM users WHERE password='$oldpass' and id='".$_SESSION["id"]."'";
   $result=mysqli_query($conn,$sql);
   $row=mysqli_fetch_assoc($result);
   $rowcount=mysqli_num_rows($result);
   if($rowcount>0){
     if($newpass==$conpass){
-    	$sql="UPDATE admin SET password='".$newpass."'  WHERE id='".$_SESSION["id"]."'";
+    	$sql="UPDATE users SET password='".$newpass."'  WHERE id='".$_SESSION["id"]."'";
     	 if(mysqli_query($conn,$sql)){
         echo ("<script>
               alert('updated successfully');

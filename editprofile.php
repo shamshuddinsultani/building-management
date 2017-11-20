@@ -2,6 +2,7 @@
  <?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
 header('location:index.php');
 } ?>
+<?php include 'db.php'; ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
@@ -13,11 +14,24 @@ header('location:index.php');
                     <div class="col-md-12 col-sm-12 col-xs-12">
                     	<fieldset>
                     		<legend>Edit profile</legend>
+                    		<form action="" method="post" enctype="multipart/form-data">
      		<div class="col-sm-4 col-xs-12">
      		<div id="preview">
-     		<img src="assets/img/blankimage.jpg">
+          <?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
+                $result=mysqli_query($conn,$sql);
+                $row=mysqli_fetch_assoc($result);
+               
+
+                $rowcount=mysqli_num_rows($result);
+                if($rowcount>0){?>
+             <?php if(!empty($row["image"])){ ?>
+                <img src="<?php echo $row["image"]; ?>">
+    <?php } else{?>
+      <img src="assets/img/blankimage.jpg">
+      <?php }
+      } ?>
      	</div>
-     	<button type="submit" name="submit" class="btn btn-primary" style="width: 225px;">change profile</button>
+     	<a href="changepic.php"><button type="button" class="btn btn-primary" style="width: 225px;">change profile</button></a>
      </div>
      <div class="col-sm-8 col-xs-12">
      	<table class="table table-dark">
@@ -65,6 +79,7 @@ header('location:index.php');
   </tbody>
 </table>
      </div>
+ </form>
                     	</fieldset>
 
   </div>

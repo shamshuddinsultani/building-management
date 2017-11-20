@@ -22,7 +22,7 @@ header('location:index.php');
 if(isset($_POST['submit'])){
 	$email=$_POST['email'];
 
-	$sql="UPDATE admin SET email='".$email."'  WHERE id='".$_SESSION["id"]."'";
+	$sql="UPDATE users SET email='".$email."'  WHERE id='".$_SESSION["id"]."'";
 	 if(mysqli_query($conn,$sql)){
           echo ("<script>
               alert('updated successfully');

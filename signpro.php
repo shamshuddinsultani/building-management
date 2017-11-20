@@ -1,28 +1,40 @@
+<?php session_start() ?>
 <?php include 'db.php'; ?>
-<?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
-header('location:index.php');
-} ?>
+
 <?php
 if(isset($_POST['submit']))
 {
-  $username=$_POST['username'];
   $email=$_POST['email'];
   $password=$_POST['password'];
   $conpassword=$_POST['conpassword'];
 
   if($password==$conpassword)
   {
-    $sql="INSERT INTO admin VALUES('','$username','$email','$password')";
+    $sql="INSERT INTO users(email,password) VALUES('$email','$password')";
     if(mysqli_query($conn,$sql)){
-      echo "data created";
-      header('location:index.php');
+      echo ("<script>
+              alert('user created successfully');
+              window.location.assign('signup.php');  
+          </script>");
     }
     else{
-      echo "error";
+      echo ("<script>
+              alert('connection error');
+              window.location.assign('signup.php');  
+          </script>");
     }
   }
   else{
-    echo "password doent match";
+    echo ("<script>
+              alert('password doent match');
+              window.location.assign('signup.php');  
+          </script>");
   }
 
+}
+else{
+  echo ("<script>
+              alert('please signup first');
+              window.location.assign('signup.php');  
+          </script>");
 }

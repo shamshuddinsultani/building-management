@@ -1,7 +1,4 @@
 <?php session_start(); ?>
-<?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
-header('location:index.php');
-} ?>
 <?php include 'db.php'; ?>
 <?php
 if(isset($_POST['submit']))
@@ -12,9 +9,9 @@ if(isset($_POST['submit']))
 {
   $email=$_POST['email'];
   $password=$_POST['password'];
-     $sql="SELECT * FROM admin WHERE email='$email' && password='$password'";
-$result=mysqli_query($conn,$sql);
-$row=mysqli_fetch_assoc($result);
+  $sql="SELECT * FROM users WHERE email='$email' && password='$password'";
+  $result=mysqli_query($conn,$sql);
+  $row=mysqli_fetch_assoc($result);
 //echo "<pre>"; print_r($row); exit;
 
 $rowcount=mysqli_num_rows($result);
@@ -26,6 +23,15 @@ $rowcount=mysqli_num_rows($result);
       header('location:profile.php');
     }
     else{
-      echo "error";
+      echo ("<script>
+              alert('email and password not exists');
+              window.location.assign('login.php');  
+          </script>");
     }
   }
+else{
+  echo ("<script>
+              alert('please login first');
+              window.location.assign('login.php');  
+          </script>");
+}

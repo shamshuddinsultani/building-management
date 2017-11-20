@@ -2,6 +2,7 @@
 <?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
 header('location:index.php');
 } ?>
+<?php include 'db.php'; ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
@@ -25,7 +26,19 @@ header('location:index.php');
      	<legend>General <span style="float: right;"><a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a></span></legend>
      	<div class="col-sm-4 col-xs-12">
      		<div id="preview">
-     		<img src="assets/img/blankimage.jpg">
+        <?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
+                $result=mysqli_query($conn,$sql);
+                $row=mysqli_fetch_assoc($result);
+               
+
+                $rowcount=mysqli_num_rows($result);
+                if($rowcount>0){?>
+             <?php if(!empty($row["image"])){ ?>
+                <img src="<?php echo $row["image"]; ?>">
+    <?php } else{?>
+      <img src="assets/img/blankimage.jpg">
+      <?php }
+      } ?>
      	</div>
      </div>
      <div class="col-sm-8 col-xs-12">
