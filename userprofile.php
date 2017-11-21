@@ -48,18 +48,41 @@ header('location:index.php');
     <tr>
       
       <td>Fullname:</td>
-      <td></td>
+      <td> <?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
+                $result=mysqli_query($conn,$sql);
+                $row=mysqli_fetch_assoc($result);
+               
+
+                $rowcount=mysqli_num_rows($result);
+                if($rowcount>0){?>
+             <?php echo $row["fullname"]; } ?></td>
       
     </tr>
     <tr>
       
       <td>Email:</td>
-      <td><?php echo $_SESSION['email']; ?> </td>
+      <td><?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
+                $result=mysqli_query($conn,$sql);
+                $row=mysqli_fetch_assoc($result);
+               
+
+                $rowcount=mysqli_num_rows($result);
+                if($rowcount>0){?>
+                <?php echo $row["email"]; }?>
+ 
+     </td>
   </tr>
     <tr>
       
       <td>Birthday:</td>
-      <td></td>
+      <td><?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
+                $result=mysqli_query($conn,$sql);
+                $row=mysqli_fetch_assoc($result);
+               
+
+                $rowcount=mysqli_num_rows($result);
+                if($rowcount>0){?>
+                <?php echo $row["dateofbirth"]; }?></td>
       
     </tr>
 </tbody>

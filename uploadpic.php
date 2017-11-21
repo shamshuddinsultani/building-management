@@ -18,7 +18,7 @@ header('location:index.php');
       $allowed=array( 'bmp','tiff','png','jpg','gif');
       if (in_array($fileActualExt,$allowed)) {
           if ($fileError === 0) {
-             if ($fileSize <10485760){
+             if ($fileSize <102400){
                 $fileNameNew = rand(100,10000).".".$fileName;
                 $fileDestination = 'uploadedpics/'.$fileNameNew;
                if(move_uploaded_file($fileTmpName,$fileDestination)){

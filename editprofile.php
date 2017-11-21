@@ -14,7 +14,7 @@ header('location:index.php');
                     <div class="col-md-12 col-sm-12 col-xs-12">
                     	<fieldset>
                     		<legend>Edit profile</legend>
-                    		<form action="" method="post" enctype="multipart/form-data">
+                    		
      		<div class="col-sm-4 col-xs-12">
      		<div id="preview">
           <?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
@@ -34,6 +34,7 @@ header('location:index.php');
      	<a href="changepic.php"><button type="button" class="btn btn-primary" style="width: 225px;">change profile</button></a>
      </div>
      <div class="col-sm-8 col-xs-12">
+      <form action="edits.php" method="post">
      	<table class="table table-dark">
  
   <tbody>
@@ -78,8 +79,9 @@ header('location:index.php');
     </tr>
   </tbody>
 </table>
+<button type="submit" name="update" class="btn btn-info">Update Profile</button>
+</form>
      </div>
- </form>
                     	</fieldset>
 
   </div>
@@ -95,7 +97,14 @@ header('location:index.php');
     <tr>
       
       <td>Email Address</td>
-      <td><?php echo $_SESSION['email']; ?></td>
+      <td><?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
+                $result=mysqli_query($conn,$sql);
+                $row=mysqli_fetch_assoc($result);
+               
+
+                $rowcount=mysqli_num_rows($result);
+                if($rowcount>0){?>
+                <?php echo $row["email"]; }?></td>
       <td><a href="changeemail.php">Change email</a></td>
       <td><a href="changepass.php">Change password</a></td>
     </tr>
@@ -104,19 +113,20 @@ header('location:index.php');
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
+      <td></td>
     </tr>
     <tr>
       
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
     	</fieldset>
   
   </div>
-
                     	    </div>
                     	</div>
 	<?php include 'footer.php'; ?>
