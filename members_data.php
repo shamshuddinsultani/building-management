@@ -2,9 +2,13 @@
 <?php include 'db.php'; ?>
 <?php if(isset($_POST['submit']))
 {
+	$first=false;
     $file=$_FILES['file']['tmp_name'];
     $handle=fopen($file,'r');
     while($row = fgetcsv($handle)){
+    	if(!$first){
+    		$first=true;
+    	}else{
     	$value= "'".implode("','",$row)."'";
     	$sql="INSERT INTO csv(firstname,lastname,age) VALUES(".$value.") ";
     	if (mysqli_query($conn,$sql)) {
@@ -20,6 +24,7 @@
           </script>");
     	}
     }
+ }
 }
 
 
