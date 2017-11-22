@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
@@ -67,6 +68,15 @@
 </form>
 </fieldset>
 </div>
+</div><br><br>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+  <fieldset>
+    <legend>Upload Members</legend>
+    <small>You can upload member(s) in bulk</small><br><br>
+    <a href="upload_members.php"><button type="button" class="btn btn-info">Upload Members</button></a>
+  </fieldset>
+  </div>
 </div>
 </div>
 <?php
@@ -84,10 +94,16 @@ if(isset($_POST['submit'])){
 
 
           if (mysqli_query($conn, $sql)) {
-            echo "New record created successfully";
+            echo ("<script>
+              alert('Member added successfully');
+              window.location.assign('addmem.php');  
+          </script>");
           }
           else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            echo ("<script>
+              alert('connection error');
+              window.location.assign('addmem.php');  
+          </script>");
           }
 
 
