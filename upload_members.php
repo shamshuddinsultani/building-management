@@ -18,7 +18,7 @@ header('location:index.php');
     <tr>
       
       <td>Members data file:</td>
-      <td><input type="file" name="file"><br></td>
+      <td><input type="file" name="file" required><br></td>
       <td></td>
       <td></td>
       <td></td>
