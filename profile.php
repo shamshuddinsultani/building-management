@@ -12,7 +12,7 @@ header('location:index.php');
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1 class="page-header">
-                            Dashboard <small>Summary of your App</small>
+                            Dashboard 
                         </h1>
                     </div>
                 </div>
