@@ -6,9 +6,6 @@
                     <li>
                         <a class="active-menu" href="profile.php"><i class="fa fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-home"></i> Home</a>
-                    </li>
 					<li>
                         <a href="#"><i class="fa fa-bar-chart-o"></i> Forums<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
