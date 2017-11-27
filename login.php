@@ -1,3 +1,10 @@
+<?php session_start(); ?>
+<?php include 'functions.php'; ?>
+<?php 
+if(isset($_POST['submit'])){
+   logIn();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +58,7 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="logpro.php" method="post" class="login-form">
+			                    <form role="form" action="" method="post" class="login-form">
                                      <div class="form-group">
                                         <label class="sr-only" for="form-email">Email</label>
                                         <input type="email" name="email" placeholder="Email..." class="form-email form-control" id="form-username" required>

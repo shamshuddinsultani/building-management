@@ -2,10 +2,13 @@
  <?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
 header('location:index.php');
 } ?>
-<?php include 'db.php'; ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
+<?php include 'functions.php'; ?>
+<?php if(isset($_POST['update'])){
+      editProfile();
+} ?>
         <div id="page-wrapper">
             <div id="page-inner">
 
@@ -34,7 +37,7 @@ header('location:index.php');
      	<a href="changepic.php"><button type="button" class="btn btn-primary" style="width: 225px;">change profile</button></a>
      </div>
      <div class="col-sm-8 col-xs-12">
-      <form action="edits.php" method="post">
+      <form action="" method="post">
      	<table class="table table-dark">
  
   <tbody>

@@ -2,16 +2,19 @@
 <?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
 header('location:index.php');
 } ?>
-<?php include 'db.php'; ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
+<?php include 'functions.php'; ?>
+<?php if(isset($_POST['submit'])){
+  changePassword();
+}?>
         <div id="page-wrapper">
         	     <div id="page-inner">
               <div class="row">
               	<fieldset>
               		<legend>Change Password</legend>
-              		<form action="changepassvalid.php" method="post">
+              		<form action="" method="post">
               	<table class="table table-dark">
   <tbody>
     <tr>

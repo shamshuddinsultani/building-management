@@ -129,7 +129,7 @@
                         <a href="#"><i class="fa fa-files-o"></i> Report<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Reports list</a>
+                                <a href="reports.php">Reports list</a>
                             </li>
                             <li>
                                 <a href="#">Email delivery reports</a>

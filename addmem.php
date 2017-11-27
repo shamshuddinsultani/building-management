@@ -1,8 +1,14 @@
 <?php session_start(); ?>
+<?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
+header('location:index.php');
+} ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
-<?php include 'db.php'; ?>
+<?php include 'functions.php'; ?>
+<?php if(isset($_POST['submit'])){
+  addMembers();
+} ?>
 <div id="page-wrapper">
       <div id="page-inner">
          <div class="row">
@@ -79,37 +85,4 @@
   </div>
 </div>
 </div>
-<?php
-if(isset($_POST['submit'])){
- //echo '<pre>'; print_r($_POST);exit;
-       $wings=$_POST["wings"];
-       $wingno=$_POST["wingno"];
-       $name=$_POST["name"];
-       $email=$_POST["email"];
-       $number=$_POST["number"];
-       $relation=$_POST["relation"];
-       $residency=$_POST["residency"];
-
-          $sql = "INSERT INTO complex  VALUES ('','$wings','$wingno','$name','$email','$number','$relation','$residency')";
-
-
-          if (mysqli_query($conn, $sql)) {
-            echo ("<script>
-              alert('Member added successfully');
-              window.location.assign('addmem.php');  
-          </script>");
-          }
-          else {
-            echo ("<script>
-              alert('connection error');
-              window.location.assign('addmem.php');  
-          </script>");
-          }
-
-
-
-      }
-
-
- ?>
- <?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
