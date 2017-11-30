@@ -10,7 +10,11 @@ if(isset($_POST['submit']))
     echo "data created";
     header('location:profile.php');
   }
+
   else{
     echo "error";
   }
 }
+
+
+

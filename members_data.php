@@ -1,47 +1,44 @@
  <?php session_start(); ?>
  <?php include 'db.php'; ?>
  <?php include 'header.php'; ?>
- <?php $sql="SELECT *
-     FROM members as t";
+ <?php $sql="SELECT * FROM members as t";
      $result=mysqli_query($conn,$sql);
      $rowcount=mysqli_num_rows($result);
-     if($rowcount>0) {
+     if($rowcount >0 ) {
        $fn = "csv_".uniqid().".csv";
        $file = fopen($fn,"w");
        ?>
-       <table class="table table-bordered">
+        <table class="table table-bordered">
+          <tbody>
+          	<?php
+               while($row=mysqli_fetch_assoc($result)){
+                 // print "<pre>";
+                 // print_r($row);
+                 // print "</pre>";
+              if(fputcsv($file,$row)){?>
 
-  <tbody>
-  	<?php 
-       while($row=mysqli_fetch_assoc($result)){
-       	$_SESSION['row']=$row;
-         // print "<pre>";
-         // print_r($row);
-         // print "</pre>";
-      if(fputcsv($file,$row)){?>
+            <tr>
+              <td><?php echo $row['blockname']; ?></td>
+              <td><?php echo $row['unitno']; ?></td>
+              <td><?php echo $row['memname']; ?></td>
+              <td><?php echo $row['mememail']; ?></td>
+              <td><?php echo $row['memphone']; ?></td>
+              <td><?php echo $row['relation']; ?></td>
+              <td><?php echo $row['residing']; ?></td>
+              <td><?php echo $row['emergeno']; ?></td>
+              <td><?php echo $row['alterno1']; ?></td>
+              <td><?php echo $row['alterno2']; ?></td>
+              <td><?php echo $row['mailadd']; ?></td>
+              <td><?php echo $row['permaadd']; ?></td>
+              <td><?php echo $row['addinfo']; ?></td>
+            </tr>
 
-    <tr>
-      <td><?php echo $row['blockname']; ?></td>
-      <td><?php echo $row['unitno']; ?></td>
-      <td><?php echo $row['memname']; ?></td>
-      <td><?php echo $row['mememail']; ?></td>
-      <td><?php echo $row['memphone']; ?></td>
-      <td><?php echo $row['relation']; ?></td>
-      <td><?php echo $row['residing']; ?></td>
-      <td><?php echo $row['emergeno']; ?></td>
-      <td><?php echo $row['alterno1']; ?></td>
-      <td><?php echo $row['alterno2']; ?></td>
-      <td><?php echo $row['mailadd']; ?></td>
-      <td><?php echo $row['permaadd']; ?></td>
-      <td><?php echo $row['addinfo']; ?></td>
-    </tr>
-  
-<?php
-}       
-}?>
-</tbody>
-</table> 
-<?php}
+            <?php
+            }
+            }?>
+          </tbody>
+        </table>
+<?php }
 else{?>
    <table class="table table-bordered">
   <thead>
