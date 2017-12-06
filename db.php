@@ -8,6 +8,6 @@ foreach($db as $key => $value)
 {
   define(strtoupper($key),$value);
 }
-
-// Create connection
+//create connection
 $conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+
