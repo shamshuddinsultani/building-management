@@ -8,16 +8,12 @@ echo "<br>";
 // while ($row = mysqli_fetch_array($result)) {
 // 	echo $row['name']."<br>";
 // }
-$found=User::find_users_by_id(6);
-$used= new User();
-$used->id=$found['id'];
-$used->wings=$found['wings'];
-$used->wingno=$found['wingno'];
-$used->name=$found['name'];
-$used->email=$found['email'];
-$used->number=$found['number'];
-$used->relation=$found['relation'];
-$used->residency=$found['residency'];
+// $found_user=User::find_users_by_id(6);
+// $used = User::instantiation($found_user);
 
-echo $used->name;
+// echo $used->number; 
+ $users=User::find_all_users();
+ foreach($users as $user){
+ 	echo $user->number ."<br>";
+ }
  ?>
