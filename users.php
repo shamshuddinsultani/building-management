@@ -25,15 +25,15 @@ class User{
     public static function find_this_query($sql){
     	global $database;
     	$result_set=$database->query($sql);
-    	$var_array=array();
-    	while($row=mysqli_fetch_array($result_set)){
-    		$var_array[]=self::instantiation($row);
-    	}	
-    	return $var_array;
+    	// $var_array=array();
+    	// while($row=mysqli_fetch_array($result_set)){
+    	// 	$var_array[]=self::instantiation($row);
+    	// }	
+    	return $result_set;
      }
     
-    public static function instantiation($used){
-        $used_found = new self;
+  //   public static function instantiation($used){
+  //       $used_found = new self;
 		// $used->id=$found['id'];
 		// $used->wings=$found['wings'];
 		// $used->wingno=$found['wingno'];
@@ -43,19 +43,19 @@ class User{
 		// $used->relation=$found['relation'];
 		// $used->residency=$found['residency'];
 
-       foreach($used as $property=>$value){
-           if ($used->has_property($property)) {
-           	   $used->$property=$value;
-           }
-        }
+     //   foreach($used as $property=>$value){
+     //       if ($used->has_property($property)) {
+     //       	   $used->$property=$value;
+     //       }
+     //    }
 
-        return $used_found;
-     }
+     //    return $used_found;
+     // }
 
-     private function has_property($property){
-     	$var= get_object_vars($this);
-     	return array_key_exists($property,$var);
-     }
+     // private function has_property($property){
+     // 	$var= get_object_vars($this);
+     // 	return array_key_exists($property,$var);
+     // }
     
 }
 
