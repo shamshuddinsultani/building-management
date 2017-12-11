@@ -1,5 +1,5 @@
-<?php session_start(); ?>
-<?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
+<?php require_once("init.php"); ?>
+<?php if(!$session->is_logged_in()){
 header('location:index.php');
 } ?>
 <?php include 'header.php'; ?>

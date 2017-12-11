@@ -1,10 +1,34 @@
-<?php session_start(); ?>
-<?php include 'functions.php'; ?>
+<?php
+ require_once("init.php"); ?>
+<?php
+ // include 'functions.php'; ?>
 <?php 
-if(isset($_POST['submit'])){
-   logIn();
-}
+// if(isset($_POST['submit'])){
+   // logIn();
+// }
 ?>
+<?php 
+if($session->is_logged_in()){
+    header("location:profile.php");    
+}
+
+if(isset($_POST['submit'])){
+    $email=trim($_POST['email']);
+    $password=trim($_POST['password']);
+
+    //checking database
+    $user_found=User::verify_user($email,$password);
+
+    if($user_found){
+        $session->login($user_found);
+        header("location:profile.php");
+    }else{
+        $message="your email and password doesn't match";
+    }
+}
+
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
