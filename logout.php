@@ -1,5 +1,5 @@
+<?php require_once("init.php") ?>
 <?php 
-session_start();
-session_destroy();
+$session->logout();
 header('location:index.php');
  ?>

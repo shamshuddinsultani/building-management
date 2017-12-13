@@ -23,7 +23,10 @@ if(isset($_POST['submit'])){
         $session->login($user_found);
         header("location:profile.php");
     }else{
-        $message="your email and password doesn't match";
+         echo ("<script>
+              alert('email and password not exists');
+              window.location.assign('login.php');  
+          </script>");
     }
 }
 
@@ -31,7 +34,6 @@ if(isset($_POST['submit'])){
  ?>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
 
         <meta charset="utf-8">

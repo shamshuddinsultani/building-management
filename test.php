@@ -24,4 +24,5 @@ echo "<br>";
  // 	echo $user->name. "<br>";
  // }
  $found_user=User::find_users_by_id(6);
+ // echo "<pre>"; print_r($found_user);
  echo $found_user->name;
