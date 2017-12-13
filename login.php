@@ -1,12 +1,4 @@
-<?php
- require_once("init.php"); ?>
-<?php
- // include 'functions.php'; ?>
-<?php 
-// if(isset($_POST['submit'])){
-   // logIn();
-// }
-?>
+<?php require_once("init.php"); ?>
 <?php 
 if($session->is_logged_in()){
     header("location:profile.php");    
@@ -29,9 +21,7 @@ if(isset($_POST['submit'])){
           </script>");
     }
 }
-
-
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
