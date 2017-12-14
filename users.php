@@ -60,7 +60,24 @@ class User{
      	$obj_properties= get_object_vars($this);
      	return array_key_exists($property,$obj_properties);
      }
+
+    public static function create($email,$password){
+    	global $database;
+    	$sql="INSERT INTO users (email,password)";
+    	$sql .="VALUES ('";
+    	$sql .=$database->escape_string($email) . "','";
+    	$sql .=$database->escape_string($password) . "')";
+
+    	if($database->query($sql)){
+    		
+
+
+    		return true;
+    	}else{
+    		return false; 
+    	}
+    }//end of create 
     
-}
+}//End of User
 
 

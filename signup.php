@@ -1,7 +1,31 @@
-<?php session_start(); ?>
-<?php include 'functions.php'; ?>
+<?php include 'init.php'; ?>
 <?php if(isset($_POST['submit'])){
-  signUp();
+  $email=trim($_POST['email']);
+  $password=trim($_POST['password']);
+  $conpassword=trim($_POST['conpassword']);
+
+  if($password==$conpassword){
+    //inserting into database
+    $signUp=User::create($email,$password);
+    if($signUp){
+        echo ("<script>
+              alert('user created successfully');
+              window.location.assign('signup.php');  
+          </script>");
+    }
+    else{
+        echo ("<script>
+              alert('connection error');
+              window.location.assign('signup.php');  
+          </script>");
+    }
+  }
+   else{
+    echo ("<script>
+              alert('password doent match');
+              window.location.assign('signup.php');  
+          </script>");
+  }
 } ?>
 
 <!DOCTYPE html>

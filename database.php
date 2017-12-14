@@ -41,7 +41,7 @@ class Database{
      }
 
      public function insert_id(){
-        return $this->conn->insert_id;
+        return mysqli_insert_id($this->conn);
      }
         
 }
