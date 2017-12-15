@@ -63,21 +63,36 @@ class User{
 
     public static function create($email,$password){
     	global $database;
-    	$sql="INSERT INTO users (email,password)";
+    	$sql  ="INSERT INTO users (email,password)";
     	$sql .="VALUES ('";
     	$sql .=$database->escape_string($email) . "','";
     	$sql .=$database->escape_string($password) . "')";
 
     	if($database->query($sql)){
-    		
-
-
     		return true;
     	}else{
     		return false; 
     	}
     }//end of create 
     
+    public static function createmembers($wings,$wingno,$name,$email,$number,$relation,$residency){
+    	global $database;
+    	$sql  ="INSERT INTO complex(wings,wingno,name,email,num,relation,residency)";
+    	$sql .="VALUES ('";	
+    	$sql .=$database->escape_string($wings) . "','";
+    	$sql .=$database->escape_string($wingno) . "','";
+    	$sql .=$database->escape_string($name) . "','";
+    	$sql .=$database->escape_string($email) . "','";
+    	$sql .=$database->escape_string($number) . "','";
+    	$sql .=$database->escape_string($relation) . "','";
+    	$sql .=$database->escape_string($residency) . "')";
+
+    	if($database->query($sql)){
+    		return true;
+    	}else{
+    		return false; 
+    	}
+    }//end of createmembers 
 }//End of User
 
 

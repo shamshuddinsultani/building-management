@@ -1,13 +1,34 @@
-<?php session_start(); ?>
-<?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
-header('location:index.php');
-} ?>
+<?php require_once("init.php"); ?>
+<?php 
+if(!$session->is_logged_in()){
+    header("location:index.php");    
+}?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
-<?php include 'functions.php'; ?>
 <?php if(isset($_POST['submit'])){
-  addMembers();
+       $wings=$_POST["wings"];
+       $wingno=$_POST["wingno"];
+       $name=$_POST["name"];
+       $email=$_POST["email"];
+       $number=$_POST["num"];
+       $relation=$_POST["relation"];
+       $residency=$_POST["residency"];
+
+       //inserting into database
+      $inserted = User::createmembers($wings,$wingno,$name,$email,$number,$relation,$residency);
+
+      if($inserted){
+         echo ("<script>
+              alert('Member added successfully');
+              window.location.assign('addmem.php');  
+          </script>");
+       }else{
+         echo ("<script>
+              alert('connection error');
+              window.location.assign('addmem.php');  
+          </script>");
+       }
 } ?>
 <div id="page-wrapper">
       <div id="page-inner">
@@ -47,7 +68,7 @@ header('location:index.php');
     </td>
     <td><input type="text" name="name"></td>
     <td><input type="email" name="email"></td>
-    <td><input type="tel" name="number"></td>
+    <td><input type="tel" name="num"></td>
        <td>
      <select size="1" name="relation">
     	<option></option>
