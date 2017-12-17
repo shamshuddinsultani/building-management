@@ -25,10 +25,15 @@ class User{
     	global $database;
     	$result_set=$database->query($sql);
     	$obj_array=array();
-    	while($row=mysqli_fetch_array($result_set)){
+    	while($row=mysqli_fetch_assoc($result_set)){
     		$obj_array[]=self::instantiation($row);
+    		$_SESSION['role']=$row['role'];
     	}	
     	return $obj_array;
+    	    // print "<pre>";
+    		// print_r($_SESSION);
+    		// print "</pre>";
+    		// exit;
      }
     
     public static function verify_user($email,$password){
