@@ -2,6 +2,8 @@
 
 class User{
 
+    protected static $db_users="users";
+    protected static $db_complex="complex";
 	public $id;
 	public $fullname;
 	public $gender;
@@ -12,12 +14,12 @@ class User{
 	
 
 	public static function find_all_users(){
-		return self::find_this_query("SELECT * FROM complex");				  
+		return self::find_this_query("SELECT * FROM ".self::$db_complex." ");				  
 	  }
     
     public static function find_users_by_id($user_id){
     	global $database;
-    	$result_array=self::find_this_query("SELECT * FROM complex WHERE id= $user_id");
+    	$result_array=self::find_this_query("SELECT * FROM ".self::$db_users." WHERE id= $user_id");
     	return !empty($result_array) ? array_shift($result_array) : false;
      }	
     
@@ -41,7 +43,7 @@ class User{
         $email=$database->escape_string($email);
         $password=$database->escape_string($password);
 
-        $sql="SELECT * FROM users WHERE email='$email' AND password='$password' ";
+        $sql="SELECT * FROM ".self::$db_users." WHERE email='$email' AND password='$password' ";
 
         $result_array=self::find_this_query($sql);
     	return !empty($result_array) ? array_shift($result_array) : false;
@@ -68,7 +70,7 @@ class User{
 
     public static function create($email,$password){
     	global $database;
-    	$sql  ="INSERT INTO users (email,password)";
+    	$sql  ="INSERT INTO ".self::$db_users." (email,password)";
     	$sql .="VALUES ('";
     	$sql .=$database->escape_string($email) . "','";
     	$sql .=$database->escape_string($password) . "')";
@@ -82,7 +84,7 @@ class User{
     
     public static function createmembers($wings,$wingno,$name,$email,$number,$relation,$residency){
     	global $database;
-    	$sql  ="INSERT INTO complex(wings,wingno,name,email,num,relation,residency)";
+    	$sql  ="INSERT INTO ".self::$db_complex." (wings,wingno,name,email,num,relation,residency)";
     	$sql .="VALUES ('";	
     	$sql .=$database->escape_string($wings) . "','";
     	$sql .=$database->escape_string($wingno) . "','";
@@ -98,6 +100,8 @@ class User{
     		return false; 
     	}
     }//end of createmembers 
+ 
+
 }//End of User
 
 
