@@ -11,7 +11,7 @@ class Database{
         // Create connection
         $this->conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
         if($this->conn->connect_errno){
-            die("connection failed".$this->conn->connect_errno);
+            die("connection failed".$this->conn->connect_error);
         }
       }
 
@@ -23,8 +23,7 @@ class Database{
       }
 
     public function query($sql){
-        $result=$this->conn->query($sql);
-    	// $result=mysqli_query($this->conn,$sql);
+      $result=$this->conn->query($sql);
     	$this->confirm_query($result);
     	return $result;
       }
@@ -36,12 +35,12 @@ class Database{
      }
     
     public function escape_string($string){
-    	$escape_string=mysqli_real_escape_string($this->conn,$string);
+    	$escape_string=$this->conn->real_escape_string($string);
     	return $escape_string;
      }
 
      public function insert_id(){
-        return mysqli_insert_id($this->conn);
+        return $this->conn->insert_id;
      }
         
 }

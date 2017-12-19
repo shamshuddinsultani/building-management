@@ -17,7 +17,7 @@ class User{
 		return self::find_this_query("SELECT * FROM ".self::$db_complex." ");				  
 	  }
     
-    public static function find_users_by_id($user_id){
+    public static function find_users_by_id($user_id){  
     	global $database;
     	$result_array=self::find_this_query("SELECT * FROM ".self::$db_users." WHERE id= $user_id");
     	return !empty($result_array) ? array_shift($result_array) : false;
@@ -54,7 +54,7 @@ class User{
 
     public static function instantiation($record){
         $used = new self;
-       foreach($record as $property=>$value){
+        foreach($record as $property=>$value){
            if ($used->has_property($property)) {
            	   $used->$property=$value;
            }
