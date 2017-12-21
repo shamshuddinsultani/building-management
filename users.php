@@ -4,6 +4,7 @@ class User{
 
     protected static $db_users="users";
     protected static $db_complex="complex";
+    protected static $db_table_fields = array('email','password');
 	public $id;
 	public $fullname;
 	public $gender;
@@ -11,6 +12,12 @@ class User{
 	public $password;
 	public $dateofbirth;
 	public $bloodgroup;
+	public $wings;
+	public $wingno;
+	public $name;
+	public $number;
+	public $relation;
+	public $residency;
 	
 
 	public static function find_all_users(){
@@ -32,10 +39,6 @@ class User{
     		$_SESSION['role']=$row['role'];
     	}	
     	return $obj_array;
-    	    // print "<pre>";
-    		// print_r($_SESSION);
-    		// print "</pre>";
-    		// exit;
      }
     
     public static function verify_user($email,$password){
@@ -55,6 +58,7 @@ class User{
     public static function instantiation($record){
         $used = new self;
         foreach($record as $property=>$value){
+
            if ($used->has_property($property)) {
            	   $used->$property=$value;
            }
@@ -68,14 +72,29 @@ class User{
      	return array_key_exists($property,$obj_properties);
      }
 
-    public static function create($email,$password){
+    protected function properties(){
+    	$properties=array();
+    	foreach(self::$db_table_fields as $db_field){
+    		if(property_exists($this, $db_field)){
+    			$properties[$db_field]=$this->$db_field;
+    		}
+    	}
+    	return $properties;
+    } 
+
+    public function save(){
+    	return isset($this->id) ? $this->update() :$this->create();
+    }
+
+
+    public function create($email,$password){
     	global $database;
-    	$sql  ="INSERT INTO ".self::$db_users." (email,password)";
-    	$sql .="VALUES ('";
-    	$sql .=$database->escape_string($email) . "','";
-    	$sql .=$database->escape_string($password) . "')";
+    	 $properties=$this->properties();
+    	 $sql  =" INSERT INTO ".self::$db_users." (". implode(",",array_keys($properties)).") ";
+    	 $sql .=" VALUES ('". implode("','",array_values($properties))."')";
 
     	if($database->query($sql)){
+    		$this->id = $database->insert_id();
     		return true;
     	}else{
     		return false; 
@@ -84,6 +103,7 @@ class User{
     
     public static function createmembers($wings,$wingno,$name,$email,$number,$relation,$residency){
     	global $database;
+    	$properties=$this->properties();
     	$sql  ="INSERT INTO ".self::$db_complex." (wings,wingno,name,email,num,relation,residency)";
     	$sql .="VALUES ('";	
     	$sql .=$database->escape_string($wings) . "','";
@@ -95,12 +115,29 @@ class User{
     	$sql .=$database->escape_string($residency) . "')";
 
     	if($database->query($sql)){
+    		$this->id = $database->insert_id();
     		return true;
     	}else{
     		return false; 
     	}
     }//end of createmembers 
- 
+    
+    public function update(){
+    	global $database;
+    	$properties = $this->properties();
+    	$property_pairs=array();
+    	foreach($properties as $key =>$value){
+    		$property_pairs[]="{$key}='{$value}'";
+    	}
+
+    	$sql  = "UPDATE".self::$db_users."SET";
+    	$sql .=implode(",",$property_pairs);
+    	$sql .=" WHERE id= ".$database->escape_string($this->id);
+
+    	$database->query($sql);
+
+    	return (mysqli_affected_rows($database->conn)== 1) ? true :false;
+    }//end of update method
 
 }//End of User
 

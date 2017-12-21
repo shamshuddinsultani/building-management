@@ -6,7 +6,8 @@
 
   if($password==$conpassword){
     //inserting into database
-    $signUp=User::create($email,$password);
+    $users=new User;
+    $signUp=$users->create($email,$password);
     if($signUp){
         echo ("<script>
               alert('user created successfully');
