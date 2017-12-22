@@ -4,7 +4,7 @@ class User{
 
     protected static $db_users="users";
     protected static $db_complex="complex";
-    protected static $db_table_fields = array('email','password');
+    protected static $db_table_fields = array( 'id','email','password');
 	public $id;
 	public $fullname;
 	public $gender;

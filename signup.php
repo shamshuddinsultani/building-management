@@ -1,14 +1,14 @@
 <?php include 'init.php'; ?>
 <?php if(isset($_POST['submit'])){
-  $email=trim($_POST['email']);
-  $password=trim($_POST['password']);
-  $conpassword=trim($_POST['conpassword']);
+  $users=new User;
+  $users->email=$_POST['email'];
+  $users->password=$_POST['password'];
+  $users->conpassword=$_POST['conpassword'];
 
-  if($password==$conpassword){
+   if($users->password==$users->conpassword){
     //inserting into database
-    $users=new User;
-    $signUp=$users->create($email,$password);
-    if($signUp){
+   
+    if($users->create($users->email,$users->password)){
         echo ("<script>
               alert('user created successfully');
               window.location.assign('signup.php');  
@@ -90,7 +90,7 @@
 			                        	<label class="sr-only" for="form-password">Password</label>
 			                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password" required>
 			                        </div>
-                              <div class="form-group">
+                             <div class="form-group">
                                 <label class="sr-only" for="form-password">ConPassword</label>
                                 <input type="password" name="conpassword" placeholder="ConPassword..." class="form-password form-control" id="form-password" required>
                               </div>
