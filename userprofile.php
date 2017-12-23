@@ -1,5 +1,4 @@
-<?php session_start(); ?>
-<?php include 'db.php'; ?>
+<?php require_once("init.php"); ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
@@ -23,19 +22,7 @@
      	<legend>General <span style="float: right;"><a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a></span></legend>
      	<div class="col-sm-4 col-xs-12">
      		<div id="preview">
-        <?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
-                $result=mysqli_query($conn,$sql);
-                $row=mysqli_fetch_assoc($result);
-               
-
-                $rowcount=mysqli_num_rows($result);
-                if($rowcount>0){?>
-             <?php if(!empty($row["image"])){ ?>
-                <img src="<?php echo $row["image"]; ?>">
-    <?php } else{?>
-      <img src="assets/img/blankimage.jpg">
-      <?php }
-      } ?>
+  
      	</div>
      </div>
      <div class="col-sm-8 col-xs-12">
@@ -45,41 +32,20 @@
     <tr>
       
       <td>Fullname:</td>
-      <td> <?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
-                $result=mysqli_query($conn,$sql);
-                $row=mysqli_fetch_assoc($result);
-               
-
-                $rowcount=mysqli_num_rows($result);
-                if($rowcount>0){?>
-             <?php echo $row["fullname"]; } ?></td>
+      <td> </td>
       
     </tr>
     <tr>
       
       <td>Email:</td>
-      <td><?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
-                $result=mysqli_query($conn,$sql);
-                $row=mysqli_fetch_assoc($result);
-               
-
-                $rowcount=mysqli_num_rows($result);
-                if($rowcount>0){?>
-                <?php echo $row["email"]; }?>
+      <td>
  
      </td>
   </tr>
     <tr>
       
       <td>Birthday:</td>
-      <td><?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
-                $result=mysqli_query($conn,$sql);
-                $row=mysqli_fetch_assoc($result);
-               
-
-                $rowcount=mysqli_num_rows($result);
-                if($rowcount>0){?>
-                <?php echo $row["dateofbirth"]; }?></td>
+      <td></td>
       
     </tr>
 </tbody>
@@ -89,9 +55,20 @@
     </div>
     <div id="preferences" class="tab-pane fade">
       <br>
-     <fieldset>
-     	<legend>Preferences</legend>
-     </fieldset>
+      <?php  if(isset($_SESSION['role'])){
+    if($_SESSION['role']!=='admin'){
+       echo "Access Denied";
+    }else{?> <fieldset>
+      <legend>Preferences</legend>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+     </fieldset><?php }
+    } ?>
+    
  </div>
     <div id="unitdetails" class="tab-pane fade">
       <br>
