@@ -37,7 +37,6 @@ if(!$session->is_logged_in()){
 		<fieldset>
 			<legend>Add members</legend>
 			<form action="" method="post">
-        <input type="text" value="complex" name="table_name"/>
 		<table class="table table-bordered table-dark">
 			  <thead>
 			    <tr>

@@ -2,10 +2,10 @@
 
 class User{
 
-    public $db_users;
-    public static $db_complex="complex";
-    public static $db_users_fields = array('email','password');
-    public static $db_complex_fields = array('wings','wingno','name','email','num','relation','residency');
+    protected static $db_users="users";
+    protected static $db_complex="complex";
+    protected static $db_users_fields = array('email','password');
+    protected static $db_complex_fields = array('wings','wingno','name','email','num','relation','residency');
 	public $id;
 	public $fullname;
 	public $gender;
@@ -27,7 +27,7 @@ class User{
     
     public static function find_users_by_id($user_id){  
     	global $database;
-    	$result_array=self::find_this_query("SELECT * FROM ".$db_users." WHERE id= $user_id");
+    	$result_array=self::find_this_query("SELECT * FROM ".self::$db_users." WHERE id= $user_id");
     	return !empty($result_array) ? array_shift($result_array) : false;
      }	
     
@@ -75,9 +75,9 @@ class User{
 
     protected function properties(){
     	$properties=array();
-    	foreach(self::$db_table_fields as $db_field){
-    		if(property_exists($this, $db_field)){
-    			$properties[$db_field]=$this->$db_field;
+    	foreach(self::$db_users_fields as $db_users){
+    		if(property_exists($this, $db_users)){
+    			$properties[$db_users]=$this->$db_users;
     		}
     	}
     	return $properties;
@@ -91,7 +91,8 @@ class User{
     public function create(){
     	 global $database;
     	 $properties=$this->properties();
-    	 $sql  =" INSERT INTO ".$db_users." (". implode(",",array_keys($properties)).") ";
+
+    	 $sql  =" INSERT INTO ".self::$db_users." (". implode(",",array_keys($properties)).") ";
     	 $sql .=" VALUES ('". implode("','",array_values($properties))."')";
 
     	if($database->query($sql)){
@@ -102,10 +103,20 @@ class User{
     	}
     }//end of create 
     
+     protected function propertiess(){
+    	$properties=array();
+    	foreach(self::$db_complex_fields as $db_complex){
+    		if(property_exists($this, $db_complex)){
+    			$properties[$db_complex]=$this->$db_complex;
+    		}
+    	}
+    	return $properties;
+    } 
+
     public function createmembers(){
     	global $database;
-    	$properties=$this->properties();
-    	echo "<pre>"; print_r($properties); exit;
+    	$properties=$this->propertiess();
+    	// echo "<pre>"; print_r($properties); exit;
     	$sql  ="INSERT INTO ".self::$db_complex." (". implode(",",array_keys($properties)).") ";
         $sql .=" VALUES ('". implode("','",array_values($properties))."')";
     	
