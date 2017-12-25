@@ -2,9 +2,10 @@
 
 class User{
 
-    protected static $db_users="users";
-    protected static $db_complex="complex";
-    protected static $db_table_fields = array( 'id','email','password');
+    public $db_users;
+    public static $db_complex="complex";
+    public static $db_users_fields = array('email','password');
+    public static $db_complex_fields = array('wings','wingno','name','email','num','relation','residency');
 	public $id;
 	public $fullname;
 	public $gender;
@@ -26,7 +27,7 @@ class User{
     
     public static function find_users_by_id($user_id){  
     	global $database;
-    	$result_array=self::find_this_query("SELECT * FROM ".self::$db_users." WHERE id= $user_id");
+    	$result_array=self::find_this_query("SELECT * FROM ".$db_users." WHERE id= $user_id");
     	return !empty($result_array) ? array_shift($result_array) : false;
      }	
     
@@ -87,10 +88,10 @@ class User{
     }
 
 
-    public function create($email,$password){
-    	global $database;
+    public function create(){
+    	 global $database;
     	 $properties=$this->properties();
-    	 $sql  =" INSERT INTO ".self::$db_users." (". implode(",",array_keys($properties)).") ";
+    	 $sql  =" INSERT INTO ".$db_users." (". implode(",",array_keys($properties)).") ";
     	 $sql .=" VALUES ('". implode("','",array_values($properties))."')";
 
     	if($database->query($sql)){
@@ -101,19 +102,13 @@ class User{
     	}
     }//end of create 
     
-    public static function createmembers($wings,$wingno,$name,$email,$number,$relation,$residency){
+    public function createmembers(){
     	global $database;
     	$properties=$this->properties();
-    	$sql  ="INSERT INTO ".self::$db_complex." (wings,wingno,name,email,num,relation,residency)";
-    	$sql .="VALUES ('";	
-    	$sql .=$database->escape_string($wings) . "','";
-    	$sql .=$database->escape_string($wingno) . "','";
-    	$sql .=$database->escape_string($name) . "','";
-    	$sql .=$database->escape_string($email) . "','";
-    	$sql .=$database->escape_string($number) . "','";
-    	$sql .=$database->escape_string($relation) . "','";
-    	$sql .=$database->escape_string($residency) . "')";
-
+    	echo "<pre>"; print_r($properties); exit;
+    	$sql  ="INSERT INTO ".self::$db_complex." (". implode(",",array_keys($properties)).") ";
+        $sql .=" VALUES ('". implode("','",array_values($properties))."')";
+    	
     	if($database->query($sql)){
     		$this->id = $database->insert_id();
     		return true;

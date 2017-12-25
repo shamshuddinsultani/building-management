@@ -7,18 +7,18 @@ if(!$session->is_logged_in()){
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
 <?php if(isset($_POST['submit'])){
-       $wings=$_POST["wings"];
-       $wingno=$_POST["wingno"];
-       $name=$_POST["name"];
-       $email=$_POST["email"];
-       $number=$_POST["num"];
-       $relation=$_POST["relation"];
-       $residency=$_POST["residency"];
+       $Members=new User;
+       $Members->wings=$_POST["wings"];
+       $Members->wingno=$_POST["wingno"];
+       $Members->name=$_POST["name"];
+       $Members->email=$_POST["email"];
+       $Members->number=$_POST["num"];
+       $Members->relation=$_POST["relation"];
+       $Members->residency=$_POST["residency"];
 
        //inserting into database
-      $inserted = User::createmembers($wings,$wingno,$name,$email,$number,$relation,$residency);
 
-      if($inserted){
+      if( $Members->createmembers(  $Members->wings,$Members->wingno,$Members->name,$Members->email,$Members->number,$Members->relation,$Members->residency)){
          echo ("<script>
               alert('Member added successfully');
               window.location.assign('addmem.php');  
@@ -37,6 +37,7 @@ if(!$session->is_logged_in()){
 		<fieldset>
 			<legend>Add members</legend>
 			<form action="" method="post">
+        <input type="text" value="complex" name="table_name"/>
 		<table class="table table-bordered table-dark">
 			  <thead>
 			    <tr>
