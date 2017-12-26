@@ -1,7 +1,7 @@
 <?php include 'init.php'; ?>
 <?php if(isset($_POST['submit'])){
   $users=new User;
-  $users->db_users=$_POST["table_name"];
+
   $users->email=$_POST['email'];
   $users->password=$_POST['password'];
   $users->conpassword=$_POST['conpassword'];
@@ -83,7 +83,7 @@
                             </div>
                             <div class="form-bottom">
 			                    <form role="form" action="" method="post" class="login-form">
-                            <input type="text" value="users" name="table_name">
+                            
                               <div class="form-group">
   			                    		<label class="sr-only" for="form-email">Email</label>
   			                        	<input type="email" name="email" placeholder="Email..." class="form-username form-control" id="form-username" required>

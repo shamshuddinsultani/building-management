@@ -7,7 +7,7 @@ if(!$session->is_logged_in()){
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
 <?php if(isset($_POST['submit'])){
-       $Members=new User;
+       $Members=new Members;
        $Members->wings=$_POST["wings"];
        $Members->wingno=$_POST["wingno"];
        $Members->name=$_POST["name"];
@@ -18,7 +18,7 @@ if(!$session->is_logged_in()){
 
        //inserting into database
 
-      if( $Members->createmembers(  $Members->wings,$Members->wingno,$Members->name,$Members->email,$Members->number,$Members->relation,$Members->residency)){
+      if( $Members->create(  $Members->wings,$Members->wingno,$Members->name,$Members->email,$Members->number,$Members->relation,$Members->residency)){
          echo ("<script>
               alert('Member added successfully');
               window.location.assign('addmem.php');  
