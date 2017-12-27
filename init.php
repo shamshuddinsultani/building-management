@@ -1,4 +1,8 @@
 <?php
+defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
+defined('DS') ? null : define('SITE_ROOT', DS .'E' .DS .'xampp' .DS .'htdocs' .DS.'Imperial');
+
+
 require_once("config.php");
 require_once("database.php");
 require_once("db_objects.php");
