@@ -28,7 +28,7 @@ class Photo extends Db_objects {
      
      // This is passing $_FILE as an arguement 
      public function set_file($file){
-     	if(empty($file)) || !$file || !is_array($file){
+     	if(empty($file) || !$file || !is_array($file)){
      		$this->errors[]="There was no file uploaded";
      		return false;
      	}elseif($file['error']!=0){
@@ -41,6 +41,11 @@ class Photo extends Db_objects {
 		    $this->size     = $file['size'];
    }
  }
+        
+        public function picture_path(){
+        	return $this->upload_directory.DS.$this->filename;
+        }
+
 
         public function save(){
         	if($this->photo_id){
@@ -53,10 +58,27 @@ class Photo extends Db_objects {
         			$this->errors[]="the file was not available";
         			return false;
         		}
-        		$target_path = SITE_ROOT .DS. 'uploads' .DS. $this->upload_directory .DS. $this->filename;
+
+        		$target_path = SITE_ROOT .DS. $this->upload_directory .DS. $this->filename;
+
+                if(file_exists($target_path)){
+                	$this->errors[]="The file {$this->filename} already exists";
+                	return false;
+                }
+
+                if(move_uploaded_file($this->tmp_path,$target_path)){
+                	if($this->create()){
+                		unset($this->tmp_path);
+                		return true;
+                	}
+                }else{
+                	$this->errors[]="the file directory does not have permissions";
+                	return false;
+                }
+
+
         	}
         }       
-   
-
+  
 }//end of photo
  ?>

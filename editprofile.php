@@ -1,14 +1,15 @@
- <?php session_start(); ?>
- <?php if(empty($_SESSION) || $_SESSION["is_loggedin"] == false){
-header('location:index.php');
-} ?>
+<?php require_once("init.php"); ?>
+<?php 
+if(!$session->is_logged_in()){
+  header("location:index.php");    
+}?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
-<?php include 'functions.php'; ?>
-<?php if(isset($_POST['update'])){
-      editProfile();
-} ?>
+<?php  
+   $photos=Photo::find_all_users();
+
+?>
         <div id="page-wrapper">
             <div id="page-inner">
 
@@ -19,21 +20,21 @@ header('location:index.php');
                     		<legend>Edit profile</legend>
                     		
      		<div class="col-sm-4 col-xs-12">
-     		<div id="preview">
-          <?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
-                $result=mysqli_query($conn,$sql);
-                $row=mysqli_fetch_assoc($result);
-               
+        <table class="table table-hover">
+          <tbody>
+            <?php foreach($photos as $photo) :?>
+            <tr>
+              <td><img src="<?php echo $photo->picture_path(); ?>"></td>
+              <td><?php echo $photo->photo_id; ?></td>
+              <td><?php echo $photo->filename; ?></td>
+              <td><?php echo $photo->title; ?></td>
+              <td><?php echo $photo->size; ?></td>
 
-                $rowcount=mysqli_num_rows($result);
-                if($rowcount>0){?>
-             <?php if(!empty($row["image"])){ ?>
-                <img src="<?php echo $row["image"]; ?>">
-    <?php } else{?>
-      <img src="assets/img/blankimage.jpg">
-      <?php }
-      } ?>
-     	</div>
+            </tr>
+          <?php endforeach; ?>
+          </tbody>
+        </table>
+     
      	<a href="changepic.php"><button type="button" class="btn btn-primary" style="width: 225px;">change profile</button></a>
      </div>
      <div class="col-sm-8 col-xs-12">
