@@ -9,10 +9,9 @@ if(!$session->is_logged_in()){
 <?php 
 $message = "";
 if(isset($_POST['submit'])){
-  $photo=new Photo();
-  $photo->title=$_POST['title'];
-  $photo->set_file($_FILES['file']);
-  if($photo->save()){
+  $user=new User();
+  $user->set_file($_FILES['file']);
+  if($user->update()){
     $message="photo uploaded";
   }else{
     $message= join("<br>",$photo->errors);   
@@ -30,7 +29,6 @@ if(isset($_POST['submit'])){
     <tr>
       
       <td>Pic to be uploaded</td>
-      <td><input type="text" name="title" required></td>
       <td><input type="file" name="file" required></td>
       <td></td>
     </tr>

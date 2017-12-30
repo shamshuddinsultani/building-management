@@ -7,7 +7,10 @@ if(!$session->is_logged_in()){
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
 <?php  
-   $photos=Photo::find_all_users();
+   if(empty($_GET['id'])){
+    header("location:index.php");
+   }
+   $users= User::find_users_by_id($_GET['id']);
 
 ?>
         <div id="page-wrapper">
@@ -22,13 +25,10 @@ if(!$session->is_logged_in()){
      		<div class="col-sm-4 col-xs-12">
         <table class="table table-hover">
           <tbody>
-            <?php foreach($photos as $photo) :?>
+            <?php foreach($users as $user) :?>
             <tr>
-              <td><img src="<?php echo $photo->picture_path(); ?>"></td>
-              <td><?php echo $photo->photo_id; ?></td>
-              <td><?php echo $photo->filename; ?></td>
-              <td><?php echo $photo->title; ?></td>
-              <td><?php echo $photo->size; ?></td>
+              <td><img src="<?php echo $user->placeholder(); ?>"></td>
+            
 
             </tr>
           <?php endforeach; ?>
