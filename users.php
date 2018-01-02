@@ -3,19 +3,12 @@
 class User extends Db_objects {
 
     protected static $db_table="users";
-    protected static $db_fields = array('email','password','image');
+    protected static $db_fields = array('email','password');
 	public $id; 
 	public $email;
 	public $password;
-	public $image;
-	public $upload_directory ="images";
-	public $image_placeholder= "http://placehold.it/200x200&text=image";
-
-
-	public function placeholder(){
-		return empty($this->image) ? $this->image_placeholder : $this->upload_directory.DS.$this->image;
-	}
-	 
+	public $fullname;
+	
 
 	
     
@@ -30,11 +23,6 @@ class User extends Db_objects {
     	return !empty($result_array) ? array_shift($result_array) : false;
 
     }
-
-
-   
-  
-
 }//End of User
 
 

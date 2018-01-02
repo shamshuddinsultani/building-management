@@ -9,9 +9,9 @@ if(!$session->is_logged_in()){
 <?php 
 $message = "";
 if(isset($_POST['submit'])){
-  $user=new User();
-  $user->set_file($_FILES['file']);
-  if($user->update()){
+  $photo=new Photo();
+  $photo->set_file($_FILES['file']);
+  if($photo->update()){
     $message="photo uploaded";
   }else{
     $message= join("<br>",$photo->errors);   

@@ -6,6 +6,8 @@
   $users->password=$_POST['password'];
   $users->conpassword=$_POST['conpassword'];
 
+
+
    if($users->password==$users->conpassword){
     //inserting into database
    

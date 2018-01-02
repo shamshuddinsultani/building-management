@@ -1,7 +1,12 @@
 <?php require_once("init.php"); ?>
+<?php 
+if(!$session->is_logged_in()){
+  header("location:index.php");    
+}?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
+
         <div id="page-wrapper">
             <div id="page-inner">
               <div class="row">
@@ -29,6 +34,8 @@
      	<table class="table table-dark">
  
   <tbody>
+  
+
     <tr>
       
       <td>Fullname:</td>
@@ -36,7 +43,7 @@
       
     </tr>
     <tr>
-      
+    
       <td>Email:</td>
       <td>
  

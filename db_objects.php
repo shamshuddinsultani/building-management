@@ -105,12 +105,10 @@ class Db_objects {
     		$property_pairs[]="{$key}='{$value}'";
     	}
 
-    	$sql  = "UPDATE".static::$db_table."SET";
-    	$sql .=implode(",",$property_pairs);
-    	$sql .=" WHERE id= ".$database->escape_string($this->id);
-
+    	$sql  = "UPDATE ".static::$db_table." SET ";
+    	$sql .= implode(",",$property_pairs);
+    	$sql .= " WHERE id = ".$database->escape_string($this->id);
     	$database->query($sql);
-
     	return (mysqli_affected_rows($database->conn)== 1) ? true :false;
     }//end of update method
 }

@@ -7,10 +7,24 @@ if(!$session->is_logged_in()){
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
 <?php  
-   if(empty($_GET['id'])){
-    header("location:index.php");
+   if(isset($_POST['update'])){
+    $user=new Update();
+    $user->find_this_query($user->id);
+
+    $user->fullname=$_POST['name'];
+
+    if($user->update()){
+      echo ("<script>
+              alert('updated successfully');
+              window.location.assign('userprofile.php');  
+          </script>");
+    }else{
+        echo ("<script>
+              alert('conn error');
+              window.location.assign('editprofile.php');  
+          </script>");
+    }
    }
-   $users= User::find_users_by_id($_GET['id']);
 
 ?>
         <div id="page-wrapper">
@@ -25,13 +39,11 @@ if(!$session->is_logged_in()){
      		<div class="col-sm-4 col-xs-12">
         <table class="table table-hover">
           <tbody>
-            <?php foreach($users as $user) :?>
-            <tr>
-              <td><img src="<?php echo $user->placeholder(); ?>"></td>
+           
             
 
             </tr>
-          <?php endforeach; ?>
+         
           </tbody>
         </table>
      
@@ -101,14 +113,7 @@ if(!$session->is_logged_in()){
     <tr>
       
       <td>Email Address</td>
-      <td><?php $sql="SELECT * FROM users WHERE id='".$_SESSION["id"]."' ";
-                $result=mysqli_query($conn,$sql);
-                $row=mysqli_fetch_assoc($result);
-               
-
-                $rowcount=mysqli_num_rows($result);
-                if($rowcount>0){?>
-                <?php echo $row["email"]; }?></td>
+      <td></td>
       <td><a href="changeemail.php">Change email</a></td>
       <td><a href="changepass.php">Change password</a></td>
     </tr>
