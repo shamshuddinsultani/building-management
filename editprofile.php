@@ -3,17 +3,22 @@
 if(!$session->is_logged_in()){
   header("location:index.php");    
 }?>
+
+
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
 <?php  
    if(isset($_POST['update'])){
-    $user=new Update();
-    $user->find_this_query($user->id);
+    $update=new Update();
 
-    $user->fullname=$_POST['name'];
+    $update->fullname=$_POST['name'];
+    $update->gender=$_POST['gender'];
+    $update->dateofbirth=$_POST['birth'];
+    $update->bloodgroup=$_POST['blood'];
+    $update->id=$_SESSION['user_id'];
 
-    if($user->update()){
+    if($update->update()){
       echo ("<script>
               alert('updated successfully');
               window.location.assign('userprofile.php');  
@@ -53,50 +58,52 @@ if(!$session->is_logged_in()){
       <form action="" method="post">
      	<table class="table table-dark">
  
-  <tbody>
-    <tr>
-      
-      <td>Fullname:</td>
-      <td><input type="text" name="name"></td>
-      
-    </tr>
-    <tr>
-      
-      <td>Gender:</td>
-      <td> <select size="1" name="gender" >
-    	<option></option>
-        <option value="male" >Male</option>
-        <option value="female" >Female</option>
-        <option value="others" >Others</option>
-    </select></td>
-      
-    </tr>
-    <tr>
-      
-      <td>Birthday</td>
-      <td><input type="date" name="birth"></td>
-      
-    </tr>
-      <tr>
-      
-      <td>Bloodgroup:</td>
-      <td> <select size="1" name="blood" >
-    	<option></option>
-        <option value="O+" >O+</option>
-        <option value="O-" >O-</option>
-        <option value="A+" >A+</option>
-        <option value="A-" >A-</option>
-        <option value="B+" >B+</option>
-        <option value="B-" >B-</option>
-        <option value="AB+" >AB+</option>
-        <option value="AB-" >AB-</option>
-    </select></td>
-      
-    </tr>
-  </tbody>
-</table>
-<button type="submit" name="update" class="btn btn-info">Update Profile</button>
-</form>
+        <tbody>
+          <tr>
+            
+            <td>Fullname:</td>
+            <td><input type="text" name="name"></td>
+            
+          </tr>
+          <tr>
+            
+            <td>Gender:</td>
+            <td> <select size="1" name="gender" >
+          	<option></option>
+              <option value="male" >Male</option>
+              <option value="female" >Female</option>
+              <option value="others" >Others</option>
+          </select></td>
+            
+          </tr>
+          <tr>
+            
+            <td>Birthday</td>
+            <td><input type="date" name="birth"></td>
+            
+          </tr>
+            <tr>
+            
+            <td>Bloodgroup:</td>
+            <td> 
+              <select size="1" name="blood" >
+                <option></option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" name="update" class="btn btn-info">Update Profile</button>
+    </form>
      </div>
                     	</fieldset>
 

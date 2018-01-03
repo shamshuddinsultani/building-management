@@ -2,10 +2,10 @@
 <?php if(!$session->is_logged_in()){
 header('location:index.php');
 } ?>
-<?php if(isset($_SESSION['role'])){
-    if($_SESSION['role']!=='admin'){
-        header("location:addmem.php");
-    }
+<?php// if(isset($_SESSION['role'])){
+//     if($_SESSION['role']!=='admin'){
+//         header("location:addmem.php");
+//     }
 } ?>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>

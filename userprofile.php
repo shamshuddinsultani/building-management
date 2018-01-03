@@ -6,7 +6,13 @@ if(!$session->is_logged_in()){
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
+<?php 
+// echo "<pre>";
+// echo "k;llllllllllllllllllllllllllllllllllllllllllllllllllllll"; echo print_r($user_id);
+// exit;
+$fetch=Fetch::find_users_by_id($user_id);
 
+?>
         <div id="page-wrapper">
             <div id="page-inner">
               <div class="row">
@@ -39,20 +45,24 @@ if(!$session->is_logged_in()){
     <tr>
       
       <td>Fullname:</td>
-      <td> </td>
+      <td><?php echo $fetch->fullname; ?> </td>
       
     </tr>
     <tr>
     
       <td>Email:</td>
-      <td>
- 
-     </td>
+      <td><?php echo $fetch->email; ?></td>
   </tr>
     <tr>
       
       <td>Birthday:</td>
-      <td></td>
+      <td><?php echo $fetch->dateofbirth; ?></td>
+      
+    </tr>
+      <tr>
+      
+      <td>Bloodgroup:</td>
+      <td><?php echo $fetch->bloodgroup; ?></td>
       
     </tr>
 </tbody>

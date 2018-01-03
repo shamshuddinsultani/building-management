@@ -10,6 +10,8 @@ require_once("users.php");
 require_once("sessions.php");
 require_once("members.php");
 require_once("photo.php");
+require_once("user_update.php");
+require_once("fetch.php");
 
 
 ?>

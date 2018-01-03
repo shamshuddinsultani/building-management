@@ -108,6 +108,10 @@ class Db_objects {
     	$sql  = "UPDATE ".static::$db_table." SET ";
     	$sql .= implode(",",$property_pairs);
     	$sql .= " WHERE id = ".$database->escape_string($this->id);
+    	// $sql .= " WHERE id = ".$_SESSION['user_id'];
+    	echo "<pre>";
+    	echo print_r($sql);
+    	exit;
     	$database->query($sql);
     	return (mysqli_affected_rows($database->conn)== 1) ? true :false;
     }//end of update method

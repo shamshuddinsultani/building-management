@@ -12,6 +12,7 @@ if(isset($_POST['submit'])){
     $user_found=User::verify_user($email,$password);
 
     if($user_found){
+
         $session->login($user_found);
         header("location:profile.php");
     }else{
