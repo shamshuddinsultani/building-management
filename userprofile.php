@@ -7,9 +7,7 @@ if(!$session->is_logged_in()){
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
 <?php 
-// echo "<pre>";
-// echo "k;llllllllllllllllllllllllllllllllllllllllllllllllllllll"; echo print_r($user_id);
-// exit;
+$user_id=$_SESSION['user_id'];
 $fetch=Fetch::find_users_by_id($user_id);
 
 ?>
@@ -72,8 +70,8 @@ $fetch=Fetch::find_users_by_id($user_id);
     </div>
     <div id="preferences" class="tab-pane fade">
       <br>
-      <?php  if(isset($_SESSION['role'])){
-    if($_SESSION['role']!=='admin'){
+      <?php  
+    if($fetch->role!=='admin'){
        echo "Access Denied";
     }else{?> <fieldset>
       <legend>Preferences</legend>
@@ -84,7 +82,7 @@ $fetch=Fetch::find_users_by_id($user_id);
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
      </fieldset><?php }
-    } ?>
+     ?>
     
  </div>
     <div id="unitdetails" class="tab-pane fade">
