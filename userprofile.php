@@ -31,7 +31,7 @@ $fetch=Fetch::find_users_by_id($user_id);
      	<legend>General <span style="float: right;"><a href="editprofile.php"><button type="button" class="btn btn-primary">Edit Profile</button></a></span></legend>
      	<div class="col-sm-4 col-xs-12">
      		<div id="preview">
-  
+           <?php echo $fetch->picture_path(); ?>
      	</div>
      </div>
      <div class="col-sm-8 col-xs-12">

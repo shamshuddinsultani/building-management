@@ -9,14 +9,16 @@ if(!$session->is_logged_in()){
 <?php 
 $message = "";
 if(isset($_POST['submit'])){
-  $photo=new Photo();
+  $photo=new User_photo();
   $photo->set_file($_FILES['file']);
-  if($photo->update()){
+  $photo->id=$_SESSION['user_id'];
+  if($photo->update_photo()){
     $message="photo uploaded";
   }else{
     $message= join("<br>",$photo->errors);   
   }
 } ?>
+
         <div id="page-wrapper">
             <div id="page-inner">
             	<fieldset>

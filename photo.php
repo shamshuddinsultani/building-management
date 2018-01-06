@@ -2,14 +2,9 @@
 
 class Photo extends Db_objects {
  
-     protected static $db_table = "photos";
-     protected static $db_fields= array('photo_id','title','description','filename','type','size');
-     public $photo_id;
-     public $title;
-     public $description;
-     public $filename;
-     public $type;
-     public $size;
+     protected static $db_table = "users";
+     protected static $db_fields= array('image');
+     public $image;
 
      public $tmp_path;
      public $upload_directory = "uploads";
@@ -26,8 +21,7 @@ class Photo extends Db_objects {
      	}else{
 		    $this->filename = basename($file['name']);
 		    $this->tmp_path = $file['tmp_name'];
-		    $this->type     = $file['type'];
-		    $this->size     = $file['size'];
+		    
    }
  }
         
@@ -56,7 +50,7 @@ class Photo extends Db_objects {
                 }
 
                 if(move_uploaded_file($this->tmp_path,$target_path)){
-                	if($this->create()){
+                	if($this->update()){
                 		unset($this->tmp_path);
                 		return true;
                 	}

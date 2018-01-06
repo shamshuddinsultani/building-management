@@ -4,7 +4,6 @@ if(!$session->is_logged_in()){
   header("location:index.php");    
 }?>
 
-
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
