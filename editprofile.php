@@ -48,8 +48,11 @@ $fetch=Fetch::find_users_by_id($user_id);
      		<div class="col-sm-4 col-xs-12">
 
         <div id="preview">
-         
-          <img src="<?php echo $fetch->photo_path(); ?>/<?php echo $fetch->image; ?>" alt="Image" />
+          <?php if(!empty($fetch->image)){ ?>         
+            <img src="<?php echo $fetch->photo_path(); ?>/<?php echo $fetch->image; ?>" alt="Image" />
+          <?php } else { ?>
+            <img src="http://via.placeholder.com/350x150" alt="Image" />
+          <?php } ?>
       </div>
      
      	<a href="changepic.php"><button type="button" class="btn btn-primary" style="width: 225px;">change profile</button></a>
