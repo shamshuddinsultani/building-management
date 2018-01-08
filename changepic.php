@@ -9,7 +9,6 @@ if(!$session->is_logged_in()){
 <?php 
 $message = "";
 if(isset($_POST['submit'])){
-  $photo=new User_photo();
   $photo->set_file($_FILES['file']);
   $photo->id=$_SESSION['user_id'];
   if($photo->update_photo()){

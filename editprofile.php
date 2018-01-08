@@ -31,6 +31,11 @@ if(!$session->is_logged_in()){
    }
 
 ?>
+<?php 
+$user_id=$_SESSION['user_id'];
+$fetch=Fetch::find_users_by_id($user_id);
+
+?>
         <div id="page-wrapper">
             <div id="page-inner">
 
@@ -41,15 +46,11 @@ if(!$session->is_logged_in()){
                     		<legend>Edit profile</legend>
                     		
      		<div class="col-sm-4 col-xs-12">
-        <table class="table table-hover">
-          <tbody>
-           
-            
 
-            </tr>
+        <div id="preview">
          
-          </tbody>
-        </table>
+          <img src="<?php echo $fetch->photo_path(); ?>/<?php echo $fetch->image; ?>" alt="Image" />
+      </div>
      
      	<a href="changepic.php"><button type="button" class="btn btn-primary" style="width: 225px;">change profile</button></a>
      </div>

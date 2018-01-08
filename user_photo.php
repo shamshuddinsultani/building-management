@@ -30,7 +30,7 @@ class User_photo extends Db_objects{
 
 
     public function picture_path(){
-    	return $this->upload_directory.DS.$this->image;
+    	return $this->upload_directory .DS. $this->image;
     }
 
     public function update_photo(){
@@ -63,5 +63,5 @@ class User_photo extends Db_objects{
 
 
 }//end of class
-
+$photo = new User_photo();
  ?>

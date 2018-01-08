@@ -11,6 +11,12 @@ class Fetch extends Db_objects {
     public $bloodgroup;
     public $image;
     public $role;
+
+
+    public function photo_path(){
+        global $photo;
+        return $photo->picture_path();
+    }
 	
 }//End of User
 
