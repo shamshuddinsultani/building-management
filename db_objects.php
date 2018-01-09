@@ -88,10 +88,10 @@ class Db_objects {
 
     	 $sql  =" INSERT INTO ".static::$db_table." (". implode(",",array_keys($properties)).") ";
     	 $sql .=" VALUES ('". implode("','",array_values($properties))."')";
-         // echo "<pre>";
-         // print_r($sql);
-         // echo "</pre>";
-         // exit;
+         echo "<pre>";
+         print_r($sql);
+         echo "</pre>";
+         exit;
 
     	if($database->query($sql)){
     		$this->id = $database->insert_id();

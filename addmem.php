@@ -7,6 +7,7 @@ if(!$session->is_logged_in()){
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
 <?php if(isset($_POST['submit'])){
+          
        $Members=new Members;
        $Members->wings=$_POST["wings"];
        $Members->wingno=$_POST["wingno"];
@@ -18,12 +19,13 @@ if(!$session->is_logged_in()){
 
        //inserting into database
 
-      if( $Members->create(  $Members->wings,$Members->wingno,$Members->name,$Members->email,$Members->number,$Members->relation,$Members->residency)){
+      if( $Members->createmembers($Members->wings,$Members->wingno,$Members->name,$Members->email,$Members->number,$Members->relation,$Members->residency)){
          echo ("<script>
               alert('Member added successfully');
               window.location.assign('addmem.php');  
           </script>");
-       }else{
+       }
+       else{
          echo ("<script>
               alert('connection error');
               window.location.assign('addmem.php');  
@@ -50,21 +52,21 @@ if(!$session->is_logged_in()){
 			    </tr>
 			  </thead>
 			  <tbody>
-                <?php for($i=1; $i<=5; $i++): ?>
+                <?php for($i=1; $i<=2; $i++): ?>
 			    <tr>
 			      <th scope="row"><?php echo $i; ?></th>
 			      <td>
     <select size="1" name="wings[] " >
     	<option></option>
-        <option value="wing a" >Wing A</option>
-        <option value="wing b" >Wing B</option>
-        <option value="wing c" >Wing C</option>
+        <option value="wing a " >Wing A</option>
+        <option value="wing b " >Wing B</option>
+        <option value="wing c " >Wing C</option>
     </select>
      <select size="1" name="wingno[] ">
     	<option></option>
-        <option value="002[] ">002</option>
-        <option value="003[] ">003</option>
-        <option value="004[] ">004</option>
+        <option value="002 ">002</option>
+        <option value="003 ">003</option>
+        <option value="004 ">004</option>
     </select>
     </td>
     <td><input type="text" name="name[] "></td>
@@ -73,18 +75,18 @@ if(!$session->is_logged_in()){
        <td>
      <select size="1" name="relation[] ">
     	<option></option>
-        <option value="co-owner[] ">Co-owner</option>
-        <option value="owner's family[] ">Owner's family</option>
-        <option value="registered owner[] ">Registered owner</option>
-        <option value="tenant[] ">Tenant</option>
-        <option value="tenant's family[] ">Tenant's family</option>
+        <option value="co-owner ">Co-owner</option>
+        <option value="owner's family ">Owner's family</option>
+        <option value="registered owner ">Registered owner</option>
+        <option value="tenant ">Tenant</option>
+        <option value="tenant's family ">Tenant's family</option>
     </select>
     </td>
      <td>
-     <select size="1" name="residency">
+     <select size="1" name="residency[] ">
     	<option></option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
+        <option value="yes ">Yes</option>
+        <option value="no ">No</option>
     </select>
     </td>
 
