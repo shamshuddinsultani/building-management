@@ -2,13 +2,11 @@
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 <?php include 'sidenav.php'; ?>
-<?php include 'functions.php'; ?>
+
 <?php if(!$session->is_logged_in()){
 header('location:index.php');
 } ?>
-<?php if(isset($_POST['submit'])){
-   uploadMembers();
-} ?>
+
         <div id="page-wrapper">
             <div id="page-inner">
                <div class="row">

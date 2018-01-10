@@ -13,13 +13,13 @@ if(!$session->is_logged_in()){
        $Members->wingno=$_POST["wingno"];
        $Members->name=$_POST["name"];
        $Members->email=$_POST["email"];
-       $Members->number=$_POST["num"];
+       $Members->num=$_POST["num"];
        $Members->relation=$_POST["relation"];
        $Members->residency=$_POST["residency"];
 
        //inserting into database
 
-      if( $Members->createmembers($Members->wings,$Members->wingno,$Members->name,$Members->email,$Members->number,$Members->relation,$Members->residency)){
+      if( $Members->createmembers($Members->wings,$Members->wingno,$Members->name,$Members->email,$Members->num,$Members->relation,$Members->residency)){
          echo ("<script>
               alert('Member added successfully');
               window.location.assign('addmem.php');  
@@ -52,41 +52,41 @@ if(!$session->is_logged_in()){
 			    </tr>
 			  </thead>
 			  <tbody>
-                <?php for($i=1; $i<=2; $i++): ?>
+                <?php for($i=0; $i<=4; $i++): ?>
 			    <tr>
 			      <th scope="row"><?php echo $i; ?></th>
 			      <td>
-    <select size="1" name="wings[] " >
+    <select size="1" name="wings[]" >
     	<option></option>
-        <option value="wing a " >Wing A</option>
-        <option value="wing b " >Wing B</option>
-        <option value="wing c " >Wing C</option>
+        <option value="wing a" >Wing A</option>
+        <option value="wing b" >Wing B</option>
+        <option value="wing c" >Wing C</option>
     </select>
-     <select size="1" name="wingno[] ">
+     <select size="1" name="wingno[]">
     	<option></option>
-        <option value="002 ">002</option>
-        <option value="003 ">003</option>
-        <option value="004 ">004</option>
+        <option value="002">002</option>
+        <option value="003">003</option>
+        <option value="004">004</option>
     </select>
     </td>
-    <td><input type="text" name="name[] "></td>
-    <td><input type="email" name="email[] "></td>
-    <td><input type="tel" name="num[] "></td>
+    <td><input type="text" name="name[]"></td>
+    <td><input type="email" name="email[]"></td>
+    <td><input type="text" name="num[]"></td>
        <td>
-     <select size="1" name="relation[] ">
+     <select size="1" name="relation[]">
     	<option></option>
-        <option value="co-owner ">Co-owner</option>
-        <option value="owner's family ">Owner's family</option>
-        <option value="registered owner ">Registered owner</option>
-        <option value="tenant ">Tenant</option>
-        <option value="tenant's family ">Tenant's family</option>
+        <option value="co-owner">Co-owner</option>
+        <option value="owners family">Owner's family</option>
+        <option value="registered owner">Registered owner</option>
+        <option value="tenant">Tenant</option>
+        <option value="tenants family">Tenant's family</option>
     </select>
     </td>
      <td>
-     <select size="1" name="residency[] ">
+     <select size="1" name="residency[]">
     	<option></option>
-        <option value="yes ">Yes</option>
-        <option value="no ">No</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
     </select>
     </td>
 
