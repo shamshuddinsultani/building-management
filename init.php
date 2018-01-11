@@ -1,6 +1,8 @@
 <?php
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 define('SITE_ROOT','E:' .DS .'xampp' .DS .'htdocs' .DS.'Imperial');
+define('BASE_URL', 'http://localhost/Imperial/');
+
 
 
 require_once("config.php");

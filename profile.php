@@ -7,9 +7,9 @@ header('location:index.php');
 //         header("location:addmem.php");
 //     }
 } ?>
-<?php include 'header.php'; ?>
-<?php include 'nav.php'; ?>
-<?php include 'sidenav.php'; ?>
+<?php include 'includes/nav.php'; ?>
+<?php include 'includes/sidenav.php'; ?>
+<?php include 'includes/header.php'; ?> 
         <div id="page-wrapper">
             <div id="page-inner">
 

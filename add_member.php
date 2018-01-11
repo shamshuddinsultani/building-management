@@ -39,6 +39,7 @@ class Members {
     } 
 
 
+
    // public function createmembers(){
    // 	global $database;
    // 	$sql = " INSERT INTO ".self::$db_table." VALUES ";
@@ -92,7 +93,7 @@ class Members {
    }
 
 
-}
+}//End of class
 
 
 
